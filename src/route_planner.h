@@ -19,6 +19,11 @@ class RoutePlanner {
     float CalculateHValue(RouteModel::Node const *node);
     std::vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node *);
     RouteModel::Node *NextNode();
+    struct orderBySum {
+      bool operator() (RouteModel::Node * a, RouteModel::Node * b) { 
+        return (a->h_value + a->g_value) < (b->h_value + b->g_value);
+        }
+    };
 
   private:
     // Add private variables or methods declarations here.
